@@ -19,6 +19,18 @@ namespace Image_Viewier
             InitializeComponent();
         }
 
+        private void ClearPictureBox()
+        {
+            if (pbImage.Image != null)
+                pbImage.Image.Dispose();
+            pbImage.Image = null;
+        }
+
+        private void AddTextToImage()
+        {
+
+        }
+
         private void btnOpen_Click(object sender, EventArgs e)
         {
             ofdOpen.ShowDialog();
@@ -26,17 +38,25 @@ namespace Image_Viewier
             if (!File.Exists(ofdOpen.FileName))
                 return;
 
-            panel1.Controls.Add(pbImage);
+            pScroll.Controls.Add(pbImage);
             Bitmap bitmap = new Bitmap(ofdOpen.FileName);
-            pbImage.Image = (Image)bitmap;
-            
+            pbImage.Image = (Image)bitmap;            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            if (pbImage.Image != null)
-                pbImage.Image.Dispose();
-                pbImage.Image = null;
+            ClearPictureBox();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            sfdSave.ShowDialog();
+
+            if (sfdSave.CheckPathExists)
+                return;
+
+            pbImage.Image.Save(sfdSave.FileName);
+            ClearPictureBox();
         }
     }
 }
