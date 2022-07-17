@@ -191,7 +191,7 @@
             this.Controls.Add(this.btnOpen);
             this.Name = "mainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Image Viewier";
+            this.Text = "Image Watermarking App";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainWindow_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.pScroll.ResumeLayout(false);
